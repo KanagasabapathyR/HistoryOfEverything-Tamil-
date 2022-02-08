@@ -7,16 +7,16 @@ import 'dart:ui' as ui;
 import 'package:flare/flare.dart' as flare;
 import 'package:flare/flare/animation/actor_animation.dart' as flare;
 import 'package:flare/flare/math/aabb.dart' as flare;
-import 'package:flare/flare/math/vec2d.dart' as flare;
+//import 'package:flare/flare/math/vec2d.dart' as flare;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/widgets.dart';
 import 'package:nima/nima.dart' as nima;
-import 'package:nima/nima/actor_image.dart' as nima;
-import 'package:nima/nima/animation/actor_animation.dart' as nima;
+//import 'package:nima/nima/actor_image.dart' as nima;
+//import 'package:nima/nima/animation/actor_animation.dart' as nima;
 import 'package:nima/nima/math/aabb.dart' as nima;
-import 'package:nima/nima/math/vec2d.dart' as nima;
+//import 'package:nima/nima/math/vec2d.dart' as nima;
 import 'package:timeline/timeline/timeline_utils.dart';
 
 import 'timeline_entry.dart';
@@ -256,10 +256,10 @@ class Timeline {
     String data = await rootBundle.loadString(filename);
     List jsonEntries = json.decode(data) as List;
 
-    List<TimelineEntry> allEntries = List<TimelineEntry>();
-    _backgroundColors = List<TimelineBackgroundColor>();
-    _tickColors = List<TickColors>();
-    _headerColors = List<HeaderColors>();
+    List<TimelineEntry> allEntries = <TimelineEntry>[];
+    _backgroundColors = <TimelineBackgroundColor>[];
+    _tickColors = <TickColors>[];
+    _headerColors = <HeaderColors>[];
 
     /// The JSON decode doesn't provide strong typing, so we'll iterate
     /// on the dynamic entries in the [jsonEntries] list.
@@ -463,7 +463,7 @@ class Timeline {
                     if (animation != null) {
                       if (flareAsset.idleAnimations == null) {
                         flareAsset.idleAnimations =
-                            List<flare.ActorAnimation>();
+                            <flare.ActorAnimation>[];
                       }
                       flareAsset.idleAnimations.add(animation);
                       flareAsset.animation = animation;
@@ -611,7 +611,7 @@ class Timeline {
     _timeMin = double.maxFinite;
     _timeMax = -double.maxFinite;
     /// List for "root" entries, i.e. entries with no parents.
-    _entries = List<TimelineEntry>();
+    _entries = <TimelineEntry>[];
     /// Build up hierarchy (Eras are grouped into "Spanning Eras" and Events are placed into the Eras they belong to).
     TimelineEntry previous;
     for (TimelineEntry entry in allEntries) {
@@ -642,7 +642,7 @@ class Timeline {
       if (parent != null) {
         entry.parent = parent;
         if (parent.children == null) {
-          parent.children = List<TimelineEntry>();
+          parent.children = <TimelineEntry>[];
         }
         parent.children.add(entry);
       } else {
@@ -971,7 +971,7 @@ class Timeline {
       }
 
       /// Advance all the assets and add the rendered ones into [_renderAssets].
-      _renderAssets = List<TimelineAsset>();
+      _renderAssets = <TimelineAsset>[];
       if (_advanceAssets(_entries, elapsed, animate, _renderAssets)) {
         doneRendering = false;
       }

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
 import 'dart:ui';
@@ -11,7 +12,7 @@ class MenuSectionData {
   Color textColor;
   Color backgroundColor;
   String assetId;
-  List<MenuItemData> items = List<MenuItemData>();
+  List<MenuItemData> items = <MenuItemData>[];
 }
 
 /// Data container for all the sub-elements of the [MenuSection].
@@ -84,7 +85,7 @@ class MenuItemData {
 class MenuData {
   List<MenuSectionData> sections = [];
   Future<bool> loadFromBundle(String filename) async {
-    List<MenuSectionData> menu = List<MenuSectionData>();
+    List<MenuSectionData> menu = <MenuSectionData>[];
     String data = await rootBundle.loadString(filename);
     List jsonEntries = json.decode(data) as List;
     for (dynamic entry in jsonEntries) {

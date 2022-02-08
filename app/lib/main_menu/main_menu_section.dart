@@ -137,7 +137,7 @@ class _SectionState extends State<MenuSection>
                               Container(
                                   height: 21.0,
                                   width: 21.0,
-                                  margin: EdgeInsets.all(18.0),
+                                  margin: EdgeInsets.all(9.0),
                                   /// Another [FlareActor] widget that
                                   /// you can experiment with here: https://www.2dimensions.com/a/pollux/files/flare/expandcollapse/preview
                                   child: flare.FlareActor(

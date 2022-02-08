@@ -2,12 +2,12 @@ import 'dart:math';
 import 'dart:ui';
 import 'dart:ui' as ui;
 
-import 'package:flare/flare/actor_image.dart' as flare;
+//import 'package:flare/flare/actor_image.dart' as flare;
 import 'package:flare/flare/math/aabb.dart' as flare;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
-import 'package:nima/nima/actor_image.dart' as nima;
+//import 'package:nima/nima/actor_image.dart' as nima;
 import 'package:nima/nima/math/aabb.dart' as nima;
 import 'package:timeline/colors.dart';
 import 'package:timeline/main_menu/menu_data.dart';
@@ -93,7 +93,7 @@ class TimelineRenderObject extends RenderBox {
   Timeline _timeline;
   MenuItemData _focusItem;
   MenuItemData _processedFocusItem;
-  List<TapTarget> _tapTargets = List<TapTarget>();
+  List<TapTarget> _tapTargets = <TapTarget>[];
   List<TimelineEntry> _favorites;
   TouchBubbleCallback touchBubble;
   TouchEntryCallback touchEntry;
@@ -433,7 +433,7 @@ class TimelineRenderObject extends RenderBox {
             canvas.translate(x, y);
 
             /// 5. perform the drawing operations.
-            asset.actor.draw(canvas, opacity: asset.opacity);
+            asset.actor.draw(canvas, /*opacity: asset.opacity*/);
             /// 6. Restore the canvas' original transform state.
             canvas.restore();
             /// 7. This asset is also a *tappable* element, add it to the list
